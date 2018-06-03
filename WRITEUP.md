@@ -41,7 +41,7 @@ Implementation of Estimator
 
 #### Step 1: Sensor Noise
 
-Determine Standard deviation of the measurement noise of both GPS X data and Accelerometer X data. For this to work the original params in [06_SensorNoise.txt](./config/06_SensorNoise.txt) needs to be modified. 
+Determine Standard deviation of the measurement noise of both GPS X data and Accelerometer X data. For this to work the original params in [06_SensorNoise.txt](./config/06_SensorNoise.txt) needs to be modified. I first ran simulation with with the provided values and I was not able to hit then I observed the graph and saw that the values for MeasuredStdDev_GPSPosXY is consistently between 0.5 to 0.9 and I changed it to around 0.67 which is approximately the mean of those two. MeasuredStdDev_AccelXY was set to 0.1 previously but it was too low to hit the range of the sinusoidal wave was way higher so I updated it 0.49 which was very close 0.5.
 
 - MeasuredStdDev_GPSPosXY was reduced from 2 to 0.67.
 - MeasuredStdDev_AccelXY was increased from 0.1 to 0.49.

@@ -219,9 +219,9 @@ MatrixXf QuadEstimatorEKF::GetRbgPrime(float roll, float pitch, float yaw)
   
   const float sinPhi = sin(phi);
   const float cosPhi = cos(phi);
-  
-  const float cosPsi = cos(psi);
+
   const float sinPsi = sin(psi);
+  const float cosPsi = cos(psi);
 
   RbgPrime(0, 0) = -(cosTheta * sinPsi);
   RbgPrime(0, 1) = -(sinPhi * sinTheta * sinPsi) - (cosPhi * cosPsi);
@@ -340,10 +340,9 @@ void QuadEstimatorEKF::UpdateFromMag(float magYaw)
   zFromX(0) = ekfState(6);
 
   // normalize the difference between your measured and estimated yaw to -pi .. pi
-  float yawDiff = z(0) - zFromX(0);
+  const float yawDiff = z(0) - zFromX(0);
   if (yawDiff > F_PI) zFromX(0) += 2.f * F_PI;
   else if (yawDiff < -F_PI) zFromX(0) -= 2.f * F_PI;
-  // hPrime= [ 0 0 0 0 0 1]
   hPrime(0, 6) = 1;
 
   /////////////////////////////// END STUDENT CODE ////////////////////////////
